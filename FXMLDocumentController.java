@@ -106,6 +106,21 @@ public class FXMLDocumentController implements Initializable {
             resultEmptyField();
         }
     }
+    //TODO REMOVE PARAMETERS FROM VALIDATE METHOD
+    //"Generate Slab" button on click event
+    @FXML
+    private void slabOnClick(ActionEvent event) throws IOException {
+        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+            SlabCreator st = new SlabCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
+            st.create();
+            resultSuccess("Slab");
+
+        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
+            resultEmptyDirectory();
+        } else {
+            resultEmptyField();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

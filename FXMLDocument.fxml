@@ -49,5 +49,10 @@
             <Font name="Corbel" size="12.0" />
          </font>
       </Button>
+      <Button layoutX="339.0" layoutY="220.0" mnemonicParsing="false" onAction="#slabOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Slab">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

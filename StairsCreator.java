@@ -40,9 +40,9 @@ public class StairsCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/stairs\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"top\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"side\": \"" + modId + ":blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -60,9 +60,9 @@ public class StairsCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/inner_stairs\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"top\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"side\": \"" + modId + ":blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -80,9 +80,9 @@ public class StairsCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/outer_stairs\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"top\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"side\": \"" + modId + ":blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -98,7 +98,7 @@ public class StairsCreator {
             File f = new File(directory + "/models/item/" + regName + "_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
-                    + "    \"parent\": \"skad:block/" + regName + "_stairs\",\n"
+                    + "    \"parent\": \"" + modId + ":block/" + regName + "_stairs\",\n"
                     + "    \"display\": {\n"
                     + "        \"thirdperson\": {\n"
                     + "            \"rotation\": [ 10, -45, 170 ],\n"
