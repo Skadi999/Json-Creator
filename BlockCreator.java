@@ -35,7 +35,7 @@ public class BlockCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/cube_all\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"all\": \"" + modId + ":blocks/" + textureName + "\",\n"
+                    + "        \"all\": \"" + modId + ":blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );

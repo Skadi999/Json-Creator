@@ -47,6 +47,24 @@ public class FXMLDocumentController implements Initializable {
         return (regName != null && !regName.equals("") && textureName != null && !textureName.equals("") && modId != null && !modId.equals("") && !txtDirectory.getText().equals("") && txtDirectory.getText() != null);
     }
 
+    public void resultSuccess(String name) {
+        lblResult.setVisible(true);
+        lblResult.setTextFill(Color.web("#008d28"));
+        lblResult.setText(name + " successfully created!");
+    }
+
+    public void resultEmptyDirectory() {
+        lblResult.setVisible(true);
+        lblResult.setTextFill(Color.web("#bc0000"));
+        lblResult.setText("You've not selected a directory.");
+    }
+
+    public void resultEmptyField() {
+        lblResult.setVisible(true);
+        lblResult.setTextFill(Color.web("#bc0000"));
+        lblResult.setText("One of your text fields is empty! You must fill all three fields.");
+    }
+
     //Browse directory button
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
@@ -63,47 +81,29 @@ public class FXMLDocumentController implements Initializable {
     //"Generate Stairs" button on click event
     @FXML
     private void stairsOnClick(ActionEvent event) throws IOException {
-        String regName = txtRegName.getText();
-        String textureName = txtTextureName.getText();
-        String modId = txtModId.getText();
-        if (validate(regName, textureName, modId)) {
-            StairsCreator st = new StairsCreator(regName, textureName, modId, txtDirectory.getText());
+        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+            StairsCreator st = new StairsCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
             st.create();
-            lblResult.setVisible(true);
-            lblResult.setTextFill(Color.web("#008d28"));
-            lblResult.setText("Stairs successfully created!");
-
+            resultSuccess("Stairs");
         } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            lblResult.setTextFill(Color.web("#bc0000"));
-            lblResult.setVisible(true);
-            lblResult.setText("You've not selected a directory.");
+            resultEmptyDirectory();
         } else {
-            lblResult.setTextFill(Color.RED);
-            lblResult.setVisible(true);
-            lblResult.setText("One of your text fields is empty! You must fill all three fields.");
+            resultEmptyField();
         }
     }
 
+    //"Generate Block" button on click event
     @FXML
     private void blockOnClick(ActionEvent event) throws IOException {
-        String regName = txtRegName.getText();
-        String textureName = txtTextureName.getText();
-        String modId = txtModId.getText();
-        if (validate(regName, textureName, modId)) {
-            BlockCreator bt = new BlockCreator(regName, textureName, modId, txtDirectory.getText());
+        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+            BlockCreator bt = new BlockCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
             bt.create();
-            lblResult.setVisible(true);
-            lblResult.setTextFill(Color.web("#008d28"));
-            lblResult.setText("Block successfully created!");
+            resultSuccess("Block");
 
         } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            lblResult.setTextFill(Color.web("#bc0000"));
-            lblResult.setVisible(true);
-            lblResult.setText("You've not selected a directory.");
+            resultEmptyDirectory();
         } else {
-            lblResult.setTextFill(Color.RED);
-            lblResult.setVisible(true);
-            lblResult.setText("One of your text fields is empty! You must fill all three fields.");
+            resultEmptyField();
         }
     }
 
