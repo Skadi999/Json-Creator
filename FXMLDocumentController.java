@@ -43,8 +43,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label lblResult;
 
-    public boolean validate(String regName, String textureName, String modId) {
-        return (regName != null && !regName.equals("") && textureName != null && !textureName.equals("") && modId != null && !modId.equals("") && !txtDirectory.getText().equals("") && txtDirectory.getText() != null);
+    public boolean validate() {
+        return (txtRegName.getText() != null && !txtRegName.getText().equals("") && txtTextureName.getText() != null && !txtTextureName.getText().equals("") && txtModId.getText() != null && !txtModId.getText().equals("") && !txtDirectory.getText().equals("") && txtDirectory.getText() != null);
     }
 
     public void resultSuccess(String name) {
@@ -81,7 +81,7 @@ public class FXMLDocumentController implements Initializable {
     //"Generate Stairs" button on click event
     @FXML
     private void stairsOnClick(ActionEvent event) throws IOException {
-        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+        if (validate()) {
             StairsCreator st = new StairsCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
             st.create();
             resultSuccess("Stairs");
@@ -95,7 +95,7 @@ public class FXMLDocumentController implements Initializable {
     //"Generate Block" button on click event
     @FXML
     private void blockOnClick(ActionEvent event) throws IOException {
-        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+        if (validate()) {
             BlockCreator bt = new BlockCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
             bt.create();
             resultSuccess("Block");
@@ -106,11 +106,10 @@ public class FXMLDocumentController implements Initializable {
             resultEmptyField();
         }
     }
-    //TODO REMOVE PARAMETERS FROM VALIDATE METHOD
     //"Generate Slab" button on click event
     @FXML
     private void slabOnClick(ActionEvent event) throws IOException {
-        if (validate(txtRegName.getText(), txtTextureName.getText(), txtModId.getText())) {
+        if (validate()) {
             SlabCreator st = new SlabCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
             st.create();
             resultSuccess("Slab");

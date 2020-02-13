@@ -43,9 +43,9 @@ public class SlabCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/half_slab\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"" + modId + ":blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"" + modId + ":blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"" + modId + ":blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
+                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
+                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -63,9 +63,9 @@ public class SlabCreator {
             fw.write("{\n"
                     + "    \"parent\": \"block/upper_slab\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"" + modId + ":blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"" + modId + ":blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"" + modId + ":blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
+                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
+                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -104,8 +104,8 @@ public class SlabCreator {
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "    \"variants\": {\n"
-                    + "        \"half=bottom\":  { \"model\": \"" + modId + ":" + regName + "_slab_bottom\" },\n"
-                    + "        \"half=top\":  { \"model\": \"" + modId + ":" + regName + "_slab_top\" }\n"
+                    + "        \"half=bottom\": { \"model\": \"" + modId + ":" + regName + "_slab_bottom\" },\n"
+                    + "        \"half=top\": { \"model\": \"" + modId + ":" + regName + "_slab_top\" }\n"
                     + "    }\n"
                     + "}"
             );
@@ -122,8 +122,8 @@ public class SlabCreator {
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "    \"variants\": {\n"
-                    + "        \"half=top\":  { \"model\": \"" + modId + ":" + regName + "\" },\n"
-                    + "        \"half=bottom\":  { \"model\": \"" + modId + ":" + regName + "\" },\n"
+                    + "        \"half=top\": { \"model\": \"minecraft:" + regName + "\" },\n"
+                    + "        \"half=bottom\": { \"model\": \"minecraft:" + regName + "\" }\n"
                     + "    }\n"
                     + "}"
             );
