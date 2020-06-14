@@ -31,21 +31,21 @@ public class SlabCreator {
         createBlockBottom();
         createBlockTop();
         createItemBlock();
-        createBlockstateHalf();
-        createBlockstateDouble();
+        createBlockstate();
+//        createBlockstateDouble();
     }
 
-    //models > block > name_slab_bottom.json
+    //models > block > name_slab.json
     public void createBlockBottom() {
         try {
-            File f = new File(directory + "/models/block/" + regName + "_slab_bottom.json");
+            File f = new File(directory + "/models/block/" + regName + "_slab.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
-                    + "    \"parent\": \"block/half_slab\",\n"
+                    + "    \"parent\": \"block/slab\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"block/" + textureName + "\",\n"
+                    + "        \"top\": \"block/" + textureName + "\",\n"
+                    + "        \"side\": \"block/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -61,11 +61,11 @@ public class SlabCreator {
             File f = new File(directory + "/models/block/" + regName + "_slab_top.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
-                    + "    \"parent\": \"block/upper_slab\",\n"
+                    + "    \"parent\": \"block/slab_top\",\n"
                     + "    \"textures\": {\n"
-                    + "        \"bottom\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"top\": \"minecraft:blocks/" + textureName + "\",\n"
-                    + "        \"side\": \"minecraft:blocks/" + textureName + "\"\n"
+                    + "        \"bottom\": \"block/" + textureName + "\",\n"
+                    + "        \"top\": \"block/" + textureName + "\",\n"
+                    + "        \"side\": \"block/" + textureName + "\"\n"
                     + "    }\n"
                     + "}"
             );
@@ -75,20 +75,13 @@ public class SlabCreator {
         }
     }
 
-    //models > item > name_slab_half.json
+    //models > item > name_slab.json
     public void createItemBlock() {
         try {
-            File f = new File(directory + "/models/item/" + regName + "_slab_half.json");
+            File f = new File(directory + "/models/item/" + regName + "_slab.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
-                    + "    \"parent\": \"" + modId + ":block/" + regName + "_slab_bottom\",\n"
-                    + "    \"display\": {\n"
-                    + "        \"thirdperson\": {\n"
-                    + "            \"rotation\": [ 10, -45, 170 ],\n"
-                    + "            \"translation\": [ 0, 1.5, -2.75 ],\n"
-                    + "            \"scale\": [ 0.375, 0.375, 0.375 ]\n"
-                    + "        }\n"
-                    + "    }\n"
+                    + "    \"parent\": \"" + modId + ":block/" + regName + "_slab\"\n"
                     + "}"
             );
             fw.close();
@@ -97,15 +90,16 @@ public class SlabCreator {
         }
     }
 
-    //blockstates > name_slab_half.json
-    public void createBlockstateHalf() {
+    //blockstates > name_slab.json
+    public void createBlockstate() {
         try {
-            File f = new File(directory + "/blockstates/" + regName + "_slab_half.json");
+            File f = new File(directory + "/blockstates/" + regName + "_slab.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "    \"variants\": {\n"
-                    + "        \"half=bottom\": { \"model\": \"" + modId + ":" + regName + "_slab_bottom\" },\n"
-                    + "        \"half=top\": { \"model\": \"" + modId + ":" + regName + "_slab_top\" }\n"
+                    + "        \"type=bottom\": { \"model\": \"" + modId + ":block/" + regName + "_slab\" },\n"
+                    + "        \"type=top\": { \"model\": \"" + modId + ":block/" + regName + "_slab_top\" },\n"
+                    + "        \"type=double\": { \"model\": \"block/" + textureName + "\" }\n"
                     + "    }\n"
                     + "}"
             );
@@ -114,23 +108,22 @@ public class SlabCreator {
             System.out.println("exception found while creating or writing to a BLOCKSTATE SLAB HALF file");
         }
     }
-    
-    //blockstates > name_slab_double.json
-    public void createBlockstateDouble() {
-        try {
-            File f = new File(directory + "/blockstates/" + regName + "_slab_double.json");
-            FileWriter fw = new FileWriter(f.getAbsolutePath());
-            fw.write("{\n"
-                    + "    \"variants\": {\n"
-                    + "        \"half=top\": { \"model\": \"minecraft:" + regName + "\" },\n"
-                    + "        \"half=bottom\": { \"model\": \"minecraft:" + regName + "\" }\n"
-                    + "    }\n"
-                    + "}"
-            );
-            fw.close();
-        } catch (IOException ioe) {
-            System.out.println("exception found while creating or writing to a BLOCKSTATE SLAB DOUBLE file");
-        }
-    }
 
+//    //blockstates > name_slab_double.json
+//    public void createBlockstateDouble() {
+//        try {
+//            File f = new File(directory + "/blockstates/" + regName + "_slab_double.json");
+//            FileWriter fw = new FileWriter(f.getAbsolutePath());
+//            fw.write("{\n"
+//                    + "    \"variants\": {\n"
+//                    + "        \"half=top\": { \"model\": \"minecraft:" + regName + "\" },\n"
+//                    + "        \"half=bottom\": { \"model\": \"minecraft:" + regName + "\" }\n"
+//                    + "    }\n"
+//                    + "}"
+//            );
+//            fw.close();
+//        } catch (IOException ioe) {
+//            System.out.println("exception found while creating or writing to a BLOCKSTATE SLAB DOUBLE file");
+//        }
+//    }
 }
