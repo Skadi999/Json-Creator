@@ -13,7 +13,7 @@
          <font>
             <Font name="Calibri" size="12.0" />
          </font></Button>
-      <TextField fx:id="txtDirectory" layoutX="47.0" layoutY="83.0" prefHeight="25.0" prefWidth="412.0" promptText="Navigate to your assets/username folder" />
+      <TextField fx:id="txtDirectory" layoutX="47.0" layoutY="83.0" prefHeight="25.0" prefWidth="412.0" promptText="Navigate to your src/main/resources folder" />
       <Label layoutX="47.0" layoutY="53.0" prefHeight="19.0" prefWidth="254.0" text="Directory">
          <font>
             <Font size="13.0" />
@@ -39,7 +39,7 @@
             </Label>
          </children>
       </HBox>
-      <Label layoutX="47.0" layoutY="117.0" text="Note: Your directory MUST contain the folders &quot;models/block&quot;, &quot;models/item&quot;, &quot;blockstates&quot;" textFill="#c93d01">
+      <Label layoutX="47.0" layoutY="117.0" text="Note: Your directory MUST contain the appropriate folders" textFill="#c93d01">
          <font>
             <Font name="Arial" size="13.0" />
          </font>

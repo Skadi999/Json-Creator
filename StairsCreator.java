@@ -22,20 +22,20 @@ public class StairsCreator {
         this.modId = modId;
         this.directory = directory;
     }
-    
-    public void create() throws IOException{
+
+    public void create() throws IOException {
         this.writeStairs();
         this.writeInnerStairs();
         this.writeOuterStairs();
         this.writeItemBlockStairs();
         this.writeBlockStateStairs();
-        
+
     }
 
     //models > block > name_stairs.json
     public void writeStairs() throws IOException {
         try {
-            File f = new File(directory + "/models/block/" + regName + "_stairs.json");
+            File f = new File(directory + "/assets/" + modId + "/models/block/" + regName + "_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "  \"parent\": \"block/stairs\",\n"
@@ -55,7 +55,7 @@ public class StairsCreator {
     //models > block > name_inner_stairs.json
     public void writeInnerStairs() throws IOException {
         try {
-            File f = new File(directory + "/models/block/" + regName + "_inner_stairs.json");
+            File f = new File(directory + "/assets/" + modId + "/models/block/" + regName + "_inner_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "  \"parent\": \"block/inner_stairs\",\n"
@@ -75,7 +75,7 @@ public class StairsCreator {
     //models > block > name_outer_stairs.json
     public void writeOuterStairs() throws IOException {
         try {
-            File f = new File(directory + "/models/block/" + regName + "_outer_stairs.json");
+            File f = new File(directory + "/assets/" + modId + "/models/block/" + regName + "_outer_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "  \"parent\": \"block/outer_stairs\",\n"
@@ -95,7 +95,7 @@ public class StairsCreator {
     //models > item > name_stairs.json
     public void writeItemBlockStairs() throws IOException {
         try {
-            File f = new File(directory + "/models/item/" + regName + "_stairs.json");
+            File f = new File(directory + "/assets/" + modId + "/models/item/" + regName + "_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "  \"parent\": \"" + modId + ":block/" + regName + "_stairs\"\n"
@@ -110,7 +110,7 @@ public class StairsCreator {
     //blockstates > name_stairs.json
     public void writeBlockStateStairs() throws IOException {
         try {
-            File f = new File(directory + "/blockstates/" + regName + "_stairs.json");
+            File f = new File(directory + "/assets/" + modId + "/blockstates/" + regName + "_stairs.json");
             FileWriter fw = new FileWriter(f.getAbsolutePath());
             fw.write("{\n"
                     + "  \"variants\": {\n"
@@ -160,6 +160,64 @@ public class StairsCreator {
             fw.close();
         } catch (IOException ioe) {
             System.out.println("exception found while creating or writing to an BLOCKSTATE STAIRS file");
+        }
+    }
+
+    private void createStairsRecipe() {
+        try {
+            File f = new File(directory + "/data/" + modId + "/recipes/" + regName + "_stairs.json");
+            FileWriter fw = new FileWriter(f.getAbsolutePath());
+            fw.write("{\n"
+                    + "  \"type\": \"minecraft:crafting_shaped\",\n"
+                    + "  \"pattern\": [\n"
+                    + "    \"#  \",\n"
+                    + "    \"## \",\n"
+                    + "    \"###\"\n"
+                    + "  ],\n"
+                    + "  \"key\": {\n"
+                    + "    \"#\": {\n"
+                    + "      \"item\": \"minecraft:" + textureName + "\"\n"
+                    + "    }\n"
+                    + "  },\n"
+                    + "  \"result\": {\n"
+                    + "    \"item\": \"" + modId + ":" + regName + "_stairs\",\n"
+                    + "    \"count\": 4\n"
+                    + "  }\n"
+                    + "}"
+            );
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Exception found while creating a STAIRS RECIPE file");
+        }
+    }
+
+    private void createStairsLootTable() {
+        try {
+            File f = new File(directory + "/data/" + modId + "/loot_tables/blocks/" + regName + "_stairs.json");
+            FileWriter fw = new FileWriter(f.getAbsolutePath());
+            fw.write("{\n"
+                    + "  \"type\": \"minecraft:block\",\n"
+                    + "  \"pools\": [\n"
+                    + "    {\n"
+                    + "      \"rolls\": 1,\n"
+                    + "      \"entries\": [\n"
+                    + "        {\n"
+                    + "          \"type\": \"minecraft:item\",\n"
+                    + "          \"name\": \"" + modId + ":" + regName + "_stairs\"\n"
+                    + "        }\n"
+                    + "      ],\n"
+                    + "      \"conditions\": [\n"
+                    + "        {\n"
+                    + "          \"condition\": \"minecraft:survives_explosion\"\n"
+                    + "        }\n"
+                    + "      ]\n"
+                    + "    }\n"
+                    + "  ]\n"
+                    + "}"
+            );
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Exception found while creating a STAIRS LOOT TABLE file");
         }
     }
 }
