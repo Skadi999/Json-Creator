@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorId" prefHeight="440.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jsoncreator.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="anchorId" prefHeight="440.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jsoncreator.FXMLDocumentController">
     <children>
         <Button fx:id="button" layoutX="479.0" layoutY="83.0" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="62.0" text="Browse">
          <font>
@@ -19,20 +19,20 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <Label layoutX="84.0" layoutY="153.0" text="Registry Name" textAlignment="CENTER" />
-      <TextField fx:id="txtRegName" layoutX="48.0" layoutY="178.0" />
-      <TextField fx:id="txtTextureName" layoutX="227.0" layoutY="178.0" />
+      <Label layoutX="84.0" layoutY="153.0" text="Material Name" textAlignment="CENTER" />
+      <TextField fx:id="txtRegName" layoutX="48.0" layoutY="178.0" promptText="your custom material" />
+      <TextField fx:id="txtTextureName" layoutX="227.0" layoutY="178.0" promptText="must be vanilla MC" />
       <Label layoutX="264.0" layoutY="153.0" text="Texture Name" textAlignment="CENTER" />
-      <TextField fx:id="txtModId" layoutX="405.0" layoutY="178.0" />
+      <TextField fx:id="txtModId" layoutX="405.0" layoutY="178.0" text="playground" />
       <Label layoutX="459.0" layoutY="153.0" text="Mod ID" />
-      <Button layoutX="48.0" layoutY="220.0" mnemonicParsing="false" onAction="#stairsOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Stairs">
+      <Button layoutX="198.0" layoutY="220.0" mnemonicParsing="false" onAction="#stairsOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Stairs">
          <font>
             <Font name="Corbel" size="12.0" />
          </font>
       </Button>
       <HBox alignment="CENTER" layoutX="139.0" layoutY="387.0" prefHeight="33.0" prefWidth="361.0">
          <children>
-            <Label fx:id="lblResult" alignment="CENTER" contentDisplay="CENTER" text="Stairs successfully created!" textAlignment="CENTER" visible="false">
+            <Label fx:id="lblResult" alignment="CENTER" contentDisplay="CENTER" text="Jsof File successfully created!" textAlignment="CENTER" visible="false">
                <font>
                   <Font name="Georgia Bold" size="12.0" />
                </font>
@@ -44,12 +44,17 @@
             <Font name="Arial" size="13.0" />
          </font>
       </Label>
-      <Button layoutX="191.0" layoutY="220.0" mnemonicParsing="false" onAction="#blockOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Block">
+      <Button layoutX="52.0" layoutY="220.0" mnemonicParsing="false" onAction="#blockOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Block">
          <font>
             <Font name="Corbel" size="12.0" />
          </font>
       </Button>
       <Button layoutX="339.0" layoutY="220.0" mnemonicParsing="false" onAction="#slabOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Slab">
+         <font>
+            <Font name="Corbel" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="479.0" layoutY="220.0" mnemonicParsing="false" onAction="#wallOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Wall">
          <font>
             <Font name="Corbel" size="12.0" />
          </font>

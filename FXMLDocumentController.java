@@ -120,6 +120,20 @@ public class FXMLDocumentController implements Initializable {
             resultEmptyField();
         }
     }
+    
+    @FXML
+    private void wallOnClick(ActionEvent event) throws IOException {
+        if (validate()) {
+            WallCreator wc = new WallCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
+            wc.create();
+            resultSuccess("Wall");
+
+        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
+            resultEmptyDirectory();
+        } else {
+            resultEmptyField();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

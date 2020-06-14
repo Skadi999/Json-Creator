@@ -32,7 +32,6 @@ public class SlabCreator {
         createBlockTop();
         createItemBlock();
         createBlockstate();
-//        createBlockstateDouble();
     }
 
     //models > block > name_slab.json
@@ -51,7 +50,7 @@ public class SlabCreator {
             );
             fw.close();
         } catch (IOException ioe) {
-            System.out.println("exception found while creating or writing to a SLAB-BOTTOM file");
+            System.out.println("exception found while creating or writing to a BLOCK SLAB file");
         }
     }
 
@@ -71,7 +70,7 @@ public class SlabCreator {
             );
             fw.close();
         } catch (IOException ioe) {
-            System.out.println("exception found while creating or writing to a SLAB-TOP file");
+            System.out.println("exception found while creating or writing to a BLOCK SLAB_TOP file");
         }
     }
 
@@ -108,22 +107,4 @@ public class SlabCreator {
             System.out.println("exception found while creating or writing to a BLOCKSTATE SLAB HALF file");
         }
     }
-
-//    //blockstates > name_slab_double.json
-//    public void createBlockstateDouble() {
-//        try {
-//            File f = new File(directory + "/blockstates/" + regName + "_slab_double.json");
-//            FileWriter fw = new FileWriter(f.getAbsolutePath());
-//            fw.write("{\n"
-//                    + "    \"variants\": {\n"
-//                    + "        \"half=top\": { \"model\": \"minecraft:" + regName + "\" },\n"
-//                    + "        \"half=bottom\": { \"model\": \"minecraft:" + regName + "\" }\n"
-//                    + "    }\n"
-//                    + "}"
-//            );
-//            fw.close();
-//        } catch (IOException ioe) {
-//            System.out.println("exception found while creating or writing to a BLOCKSTATE SLAB DOUBLE file");
-//        }
-//    }
 }
