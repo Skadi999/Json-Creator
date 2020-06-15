@@ -134,6 +134,20 @@ public class FXMLDocumentController implements Initializable {
             resultEmptyField();
         }
     }
+    
+    @FXML
+    private void fenceOnClick(ActionEvent event) throws IOException {
+        if (validate()) {
+            FenceCreator fc = new FenceCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
+            fc.create();
+            resultSuccess("Fence");
+
+        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
+            resultEmptyDirectory();
+        } else {
+            resultEmptyField();
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
