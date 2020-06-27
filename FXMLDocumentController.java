@@ -5,6 +5,11 @@
  */
 package jsoncreator;
 
+import jsoncreator.generators.StairsGenerator;
+import jsoncreator.generators.WallGenerator;
+import jsoncreator.generators.BlockGenerator;
+import jsoncreator.generators.SlabGenerator;
+import jsoncreator.generators.FenceGenerator;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import jsoncreator.generators.FileGenerator;
 
 /**
  *
@@ -44,7 +50,12 @@ public class FXMLDocumentController implements Initializable {
     private Label lblResult;
 
     public boolean validate() {
-        return (txtRegName.getText() != null && !txtRegName.getText().equals("") && txtTextureName.getText() != null && !txtTextureName.getText().equals("") && txtModId.getText() != null && !txtModId.getText().equals("") && !txtDirectory.getText().equals("") && txtDirectory.getText() != null);
+        return (txtRegName.getText() != null && !txtRegName.getText().equals("")
+                && txtTextureName.getText() != null
+                && !txtTextureName.getText().equals("") && txtModId.getText()
+                != null && !txtModId.getText().equals("")
+                && !txtDirectory.getText().equals("")
+                && txtDirectory.getText() != null);
     }
 
     public void resultSuccess(String name) {
@@ -65,7 +76,6 @@ public class FXMLDocumentController implements Initializable {
         lblResult.setText("One of your text fields is empty! You must fill all three fields.");
     }
 
-    //Browse directory button
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         try {
@@ -78,13 +88,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    //"Generate Stairs" button on click event
-    @FXML
-    private void stairsOnClick(ActionEvent event) throws IOException {
+    private void commonOnClick(FileGenerator gen, String name) {
         if (validate()) {
-            StairsCreator st = new StairsCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
-            st.create();
-            resultSuccess("Stairs");
+            gen.generate();
+            resultSuccess(name);
         } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
             resultEmptyDirectory();
         } else {
@@ -92,61 +99,34 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    //"Generate Block" button on click event
     @FXML
-    private void blockOnClick(ActionEvent event) throws IOException {
-        if (validate()) {
-            BlockCreator bt = new BlockCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
-            bt.create();
-            resultSuccess("Block");
-
-        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            resultEmptyDirectory();
-        } else {
-            resultEmptyField();
-        }
+    private void stairsOnClick(ActionEvent event) {
+        commonOnClick(new StairsGenerator(txtRegName.getText(), txtTextureName.getText(),
+                txtModId.getText(), txtDirectory.getText()), "Stairs");
     }
-    //"Generate Slab" button on click event
+
     @FXML
-    private void slabOnClick(ActionEvent event) throws IOException {
-        if (validate()) {
-            SlabCreator st = new SlabCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
-            st.create();
-            resultSuccess("Slab");
-
-        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            resultEmptyDirectory();
-        } else {
-            resultEmptyField();
-        }
+    private void blockOnClick(ActionEvent event) {
+        commonOnClick(new BlockGenerator(txtRegName.getText(), txtTextureName.getText(),
+                txtModId.getText(), txtDirectory.getText()), "Block");
     }
-    
+
     @FXML
-    private void wallOnClick(ActionEvent event) throws IOException {
-        if (validate()) {
-            WallCreator wc = new WallCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
-            wc.create();
-            resultSuccess("Wall");
-
-        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            resultEmptyDirectory();
-        } else {
-            resultEmptyField();
-        }
+    private void slabOnClick(ActionEvent event) {
+        commonOnClick(new SlabGenerator(txtRegName.getText(), txtTextureName.getText(),
+                txtModId.getText(), txtDirectory.getText()), "Slab");
     }
-    
+
+    @FXML
+    private void wallOnClick(ActionEvent event) {
+        commonOnClick(new WallGenerator(txtRegName.getText(), txtTextureName.getText(),
+                txtModId.getText(), txtDirectory.getText()), "Wall");
+    }
+
     @FXML
     private void fenceOnClick(ActionEvent event) throws IOException {
-        if (validate()) {
-            FenceCreator fc = new FenceCreator(txtRegName.getText(), txtTextureName.getText(), txtModId.getText(), txtDirectory.getText());
-            fc.create();
-            resultSuccess("Fence");
-
-        } else if (txtDirectory.getText().equals("") || txtDirectory.getText() == null) {
-            resultEmptyDirectory();
-        } else {
-            resultEmptyField();
-        }
+        commonOnClick(new FenceGenerator(txtRegName.getText(), txtTextureName.getText(),
+                txtModId.getText(), txtDirectory.getText()), "Fence");
     }
 
     @Override
