@@ -66,7 +66,7 @@ public class SlabGenerator extends FileGenerator {
                 + "    \"variants\": {\n"
                 + "        \"type=bottom\": { \"model\": \"" + modId + ":block/" + regName + "_slab\" },\n"
                 + "        \"type=top\": { \"model\": \"" + modId + ":block/" + regName + "_slab_top\" },\n"
-                + "        \"type=double\": { \"model\": \"block/" + textureName + "\" }\n"
+                + "        \"type=double\": { \"model\": \"block/" + regName + "\" }\n"
                 + "    }\n"
                 + "}");
     }
@@ -80,7 +80,7 @@ public class SlabGenerator extends FileGenerator {
                 + "  ],\n"
                 + "  \"key\": {\n"
                 + "    \"#\": {\n"
-                + "      \"item\": \"minecraft:" + textureName + "\"\n"
+                + "      \"item\": \"minecraft:" + regName + "\"\n"
                 + "    }\n"
                 + "  },\n"
                 + "  \"result\": {\n"

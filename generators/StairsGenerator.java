@@ -29,7 +29,7 @@ public class StairsGenerator extends FileGenerator {
     }
 
     //models > block > name_stairs.json
-    public void generateStairs() {
+    private void generateStairs() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_stairs.json",
                 "{\n"
                 + "  \"parent\": \"block/stairs\",\n"
@@ -42,7 +42,7 @@ public class StairsGenerator extends FileGenerator {
     }
 
     //models > block > name_inner_stairs.json
-    public void generateInnerStairs() {
+    private void generateInnerStairs() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_inner_stairs.json",
                 "{\n"
                 + "  \"parent\": \"block/inner_stairs\",\n"
@@ -55,7 +55,7 @@ public class StairsGenerator extends FileGenerator {
     }
 
     //models > block > name_outer_stairs.json
-    public void generateOuterStairs() {
+    private void generateOuterStairs() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_outer_stairs.json",
                 "{\n"
                 + "  \"parent\": \"block/outer_stairs\",\n"
@@ -68,7 +68,7 @@ public class StairsGenerator extends FileGenerator {
     }
 
     //models > item > name_stairs.json
-    public void generateItemBlockStairs() {
+    private void generateItemBlockStairs() {
         generateFile(directory + "/assets/" + modId + "/models/item/" + regName + "_stairs.json",
                 "{\n"
                 + "  \"parent\": \"" + modId + ":block/" + regName + "_stairs\"\n"
@@ -76,7 +76,7 @@ public class StairsGenerator extends FileGenerator {
     }
 
     //blockstates > name_stairs.json
-    public void generateBlockStateStairs() {
+    private void generateBlockStateStairs() {
         generateFile(directory + "/assets/" + modId + "/blockstates/" + regName + "_stairs.json",
                 "{\n"
                 + "  \"variants\": {\n"
@@ -135,7 +135,7 @@ public class StairsGenerator extends FileGenerator {
                 + "  ],\n"
                 + "  \"key\": {\n"
                 + "    \"#\": {\n"
-                + "      \"item\": \"minecraft:" + textureName + "\"\n"
+                + "      \"item\": \"minecraft:" + regName + "\"\n"
                 + "    }\n"
                 + "  },\n"
                 + "  \"result\": {\n"

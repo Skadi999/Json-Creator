@@ -13,7 +13,7 @@
          <font>
             <Font name="Calibri" size="12.0" />
          </font></Button>
-      <TextField fx:id="txtDirectory" layoutX="47.0" layoutY="83.0" prefHeight="25.0" prefWidth="412.0" promptText="Navigate to your src/main/resources folder" text="C:\MC_Modding\Playground\src\main\resources" />
+      <TextField fx:id="txtDirectory" layoutX="47.0" layoutY="83.0" prefHeight="25.0" prefWidth="412.0" promptText="Navigate to your src/main/resources folder" />
       <Label layoutX="47.0" layoutY="53.0" prefHeight="19.0" prefWidth="254.0" text="Directory">
          <font>
             <Font size="13.0" />
@@ -23,7 +23,7 @@
       <TextField fx:id="txtRegName" layoutX="48.0" layoutY="178.0" promptText="your custom material" />
       <TextField fx:id="txtTextureName" layoutX="227.0" layoutY="178.0" promptText="must be vanilla MC" />
       <Label layoutX="264.0" layoutY="153.0" text="Texture Name" textAlignment="CENTER" />
-      <TextField fx:id="txtModId" layoutX="405.0" layoutY="178.0" text="playground" />
+      <TextField fx:id="txtModId" layoutX="405.0" layoutY="178.0" text="morevanillablocks" />
       <Label layoutX="459.0" layoutY="153.0" text="Mod ID" />
       <Button layoutX="198.0" layoutY="220.0" mnemonicParsing="false" onAction="#stairsOnClick" prefHeight="48.0" prefWidth="110.0" text="Generate Stairs">
          <font>

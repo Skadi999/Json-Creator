@@ -5,7 +5,6 @@
  */
 package jsoncreator.generators;
 
-
 /**
  *
  * @author Вячеслав
@@ -15,7 +14,7 @@ public class WallGenerator extends FileGenerator {
     public WallGenerator(String regName, String textureName, String modId, String directory) {
         super(regName, textureName, modId, directory);
     }
-    
+
     @Override
     public void generate() {
         generateWallPost();
@@ -25,14 +24,15 @@ public class WallGenerator extends FileGenerator {
         generateWallItem();
         generateWallRecipe();
         generateWallLootTable();
+        generateWallSideTall();
     }
 
     private void generateWallPost() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_wall_post.json",
                 "{\n"
-                + "    \"parent\": \"block/template_wall_post\",\n"
+                + "    \"parent\": \"minecraft:block/template_wall_post\",\n"
                 + "    \"textures\": {\n"
-                + "        \"wall\": \"block/" + textureName + "\"\n"
+                + "        \"wall\": \"minecraft:block/" + textureName + "\"\n"
                 + "    }\n"
                 + "}");
     }
@@ -40,9 +40,19 @@ public class WallGenerator extends FileGenerator {
     private void generateWallSide() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_wall_side.json",
                 "{\n"
-                + "    \"parent\": \"block/template_wall_side\",\n"
+                + "    \"parent\": \"minecraft:block/template_wall_side\",\n"
                 + "    \"textures\": {\n"
-                + "        \"wall\": \"block/" + textureName + "\"\n"
+                + "        \"wall\": \"minecraft:block/" + textureName + "\"\n"
+                + "    }\n"
+                + "}");
+    }
+
+    private void generateWallSideTall() {
+        generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_wall_side_tall.json",
+                "{\n"
+                + "    \"parent\": \"minecraft:block/template_wall_side_tall\",\n"
+                + "    \"textures\": {\n"
+                + "        \"wall\": \"minecraft:block/" + textureName + "\"\n"
                 + "    }\n"
                 + "}");
     }
@@ -50,9 +60,9 @@ public class WallGenerator extends FileGenerator {
     private void generateWallInventory() {
         generateFile(directory + "/assets/" + modId + "/models/block/" + regName + "_wall_inventory.json",
                 "{\n"
-                + "    \"parent\": \"block/wall_inventory\",\n"
+                + "    \"parent\": \"minecraft:block/wall_inventory\",\n"
                 + "    \"textures\": {\n"
-                + "        \"wall\": \"block/" + textureName + "\"\n"
+                + "        \"wall\": \"minecraft:block/" + textureName + "\"\n"
                 + "    }\n"
                 + "}");
     }
@@ -61,20 +71,91 @@ public class WallGenerator extends FileGenerator {
         generateFile(directory + "/assets/" + modId + "/blockstates/" + regName + "_wall.json",
                 "{\n"
                 + "    \"multipart\": [\n"
-                + "        {   \"when\": { \"up\": \"true\" },\n"
-                + "            \"apply\": { \"model\": \"" + modId + ":block/" + regName + "_wall_post\" }\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"up\": \"true\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_post\"\n"
+                + "            }\n"
                 + "        },\n"
-                + "        {   \"when\": { \"north\": \"true\" },\n"
-                + "            \"apply\": { \"model\": \"" + modId + ":block/" + regName + "_wall_side\", \"uvlock\": true }\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"north\": \"low\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side\",\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
                 + "        },\n"
-                + "        {   \"when\": { \"east\": \"true\" },\n"
-                + "            \"apply\": { \"model\": \"" + modId + ":block/" + regName + "_wall_side\", \"y\": 90, \"uvlock\": true }\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"east\": \"low\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side\",\n"
+                + "                \"y\": 90,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
                 + "        },\n"
-                + "        {   \"when\": { \"south\": \"true\" },\n"
-                + "            \"apply\": { \"model\": \"" + modId + ":block/" + regName + "_wall_side\", \"y\": 180, \"uvlock\": true }\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"south\": \"low\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side\",\n"
+                + "                \"y\": 180,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
                 + "        },\n"
-                + "        {   \"when\": { \"west\": \"true\" },\n"
-                + "            \"apply\": { \"model\": \"" + modId + ":block/" + regName + "_wall_side\", \"y\": 270, \"uvlock\": true }\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"west\": \"low\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side\",\n"
+                + "                \"y\": 270,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
+                + "        },\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"north\": \"tall\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side_tall\",\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
+                + "        },\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"east\": \"tall\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side_tall\",\n"
+                + "                \"y\": 90,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
+                + "        },\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"south\": \"tall\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side_tall\",\n"
+                + "                \"y\": 180,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
+                + "        },\n"
+                + "        {\n"
+                + "            \"when\": {\n"
+                + "                \"west\": \"tall\"\n"
+                + "            },\n"
+                + "            \"apply\": {\n"
+                + "                \"model\": \"" + modId + ":block/" + regName + "_wall_side_tall\",\n"
+                + "                \"y\": 270,\n"
+                + "                \"uvlock\": true\n"
+                + "            }\n"
                 + "        }\n"
                 + "    ]\n"
                 + "}");
@@ -97,7 +178,7 @@ public class WallGenerator extends FileGenerator {
                 + "  ],\n"
                 + "  \"key\": {\n"
                 + "    \"#\": {\n"
-                + "      \"item\": \"minecraft:" + textureName + "\"\n"
+                + "      \"item\": \"minecraft:" + regName + "\"\n"
                 + "    }\n"
                 + "  },\n"
                 + "  \"result\": {\n"
